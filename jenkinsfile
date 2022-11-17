@@ -1,0 +1,24 @@
+pipeline {
+    agent any {
+    
+       customWorkspace '/mnt/jenkins1'
+    }
+}
+      stages {
+        stage('static web') { 
+            steps {
+                echo "install httpd in slave"
+            }
+        }
+        stage('Install httpd') { 
+            steps {
+                sh 'sudo yum install httpd -y' 
+            }
+        }
+        stage('status httpd') { 
+            steps {
+                sh 'sudo service httpd start' 
+            }
+        
+    }
+}
